@@ -2,6 +2,17 @@ const fs = require("fs");
 const path = require("path");
 const argv = require("./argv");
 
-// node index.js --dir 'files' --ext 'png' --format 'photo-$$$'
+// Sprawdzenie poprawności podanych elementów
+if (!argv.validate(["dir", "ext", "format"])) {
+  throw new Error("No valid parameters given");
+}
 
-console.log ( argv.get("dir"))
+//Odczytanie plików z katalogu
+let dir = path.join(__dirname, argv.get("dir"));
+
+fs.readdir(dir, function (err, files) {
+  if (err) {
+    throw err;
+  } else {
+  }
+});
